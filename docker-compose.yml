@@ -1,0 +1,16 @@
+version: "3.7"
+
+
+services:
+  web:
+    build: .
+    
+    ports: 
+      - 8000:80
+    
+    volumes:
+      - ./data:/data
+    
+    container_name: demo_nginx
+  
+  
