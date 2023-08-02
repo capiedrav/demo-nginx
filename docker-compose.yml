@@ -1,15 +1,24 @@
 version: "3.7"
 
+networks:
+    # attach to this network to access the cloudflare tunnel
+    app-net:
+        external: true
 
 services:
   web:
     build: .
     
-    ports: 
-      - 8000:80
+    expose: 
+      - 80
     
     volumes:
       - ./data:/data
+
+    networks:
+        - app-net
+    
+    restart: unless-stopped
     
     container_name: demo_nginx
   
